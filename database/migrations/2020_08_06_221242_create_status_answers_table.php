@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionsTable extends Migration
+class CreateStatusAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('status_answers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('judul');
-            $table->string('isi');
+            $table->enum('status', ['like', 'dislike'])->nullable();
+            $table->unsignedBigInteger('ans_id');
             $table->string('email_users');
+            $table->foreign('ans_id')->references('id')->on('answers');
             $table->foreign('email_users')->references('email')->on('users');
-            $table->timestamps();
         });
     }
 
@@ -30,6 +30,6 @@ class CreateQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('status_answers');
     }
 }

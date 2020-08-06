@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionsTable extends Migration
+class AddAtributsToQuestionComments extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('judul');
-            $table->string('isi');
+        Schema::table('question_comments', function (Blueprint $table) {
+            $table->timestamp('tgl_buat')->nullable();
             $table->string('email_users');
+            $table->unsignedBigInteger('quest_id');
             $table->foreign('email_users')->references('email')->on('users');
-            $table->timestamps();
+            $table->foreign('quest_id')->references('id')->on('questions');
         });
     }
 
@@ -30,6 +29,8 @@ class CreateQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions');
+        Schema::table('question_comments', function (Blueprint $table) {
+            //
+        });
     }
 }
