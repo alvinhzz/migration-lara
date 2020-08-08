@@ -33,23 +33,41 @@ class QuestionsController extends Controller
         return redirect('/quest');
     }
 
-    // public function show()
-    // {
-    //     //
-    // }
+    public function show($id)
+    {
+        $data = DB::table('questions')->where('id', $id)->first();
 
-    // public function edit()
-    // {
-    //     # code...
-    // }
+        return view('detail', ['data' => $data]);
+    }
 
-    // public function update()
-    // {
-    //     # code...
-    // }
+    public function edit($id)
+    {
+        $data = DB::table('questions')->where('id', $id)->first();
 
-    // public function destroy()
-    // {
-    //     # code...
-    // }
+        return view('edit', ['data' => $data]);
+    }
+
+    public function update($id, Request $req)
+    {
+        $req->validate([
+            "judul" => 'required|max:55|unique:questions',
+            "isi" => 'required|max:255'
+        ]);
+
+        DB::table('questions')
+            ->where('id', $id)
+            ->update([
+                "judul" => $req["judul"],
+                "isi"   => $req["isi"]
+            ]);
+
+        return redirect('/quest');
+    }
+
+    public function destroy($id)
+    {
+        DB::table('questions')->where('id', $id)->delete();
+
+        return redirect('/quest');
+    }
 }

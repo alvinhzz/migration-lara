@@ -18,6 +18,7 @@
                     <th>Judul</th>
                     <th>Isi</th>
                     <th>Tanggal Diupload</th>
+                    <th>Tanggal Diedit</th>
                     <th colspan="2">#</th>
                 </tr>
             </thead>
@@ -29,11 +30,16 @@
                     <td>{{ $quest->judul }}</td>
                     <td>{{ $quest->isi }}</td>
                     <td>{{ $quest->created_at }}</td>
+                    <td>{{ $quest->updated_at }}</td>
                     <td>
                         <div class="d-flex justify-content-around">
                             <a href="/quest/{{ $quest->id }}" class="btn btn-success">Detail</a>
                             <a href="/quest/{{ $quest->id }}/edit" class="btn btn-warning">Edit</a>
-                            <a href="/quest/{{ $quest->id }}" class="btn btn-danger">Delete</a>
+                            <form action="/quest/{{ $quest->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Delete" class="btn btn-danger">
+                            </form>
                         </div>
                     </td>
                 </tr>

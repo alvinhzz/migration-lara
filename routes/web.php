@@ -18,10 +18,10 @@ Route::get('/quest/create', 'QuestionsController@create');
 
 Route::post('/quest', 'QuestionsController@store');
 
-// Route::get('/', 'QuestionsController@index');
+Route::get('/quest/{id}', 'QuestionsController@show');
 
-// Route::get('/', 'QuestionsController@index');
+Route::get('/quest/{id}/edit', 'QuestionsController@edit');
 
-// Route::get('/', 'QuestionsController@index');
+Route::put('/quest/{id}', 'QuestionsController@update');
 
-// Route::get('/', 'QuestionsController@index');
+Route::delete('/quest/{id}', 'QuestionsController@destroy');
