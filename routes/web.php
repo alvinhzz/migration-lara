@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +12,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/quest', 'QuestionsController@index');
+
+Route::get('/quest/create', 'QuestionsController@create');
+
+Route::post('/quest', 'QuestionsController@store');
+
+// Route::get('/', 'QuestionsController@index');
+
+// Route::get('/', 'QuestionsController@index');
+
+// Route::get('/', 'QuestionsController@index');
+
+// Route::get('/', 'QuestionsController@index');
