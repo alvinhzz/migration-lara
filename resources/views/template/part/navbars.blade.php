@@ -7,10 +7,10 @@
     <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/quest">Home</a>
+                <a class="nav-link" href="{{ route('quest.index')}}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/quest/create">Insert Data</a>
+                <a class="nav-link" href="{{ route('quest.create')}}">Insert Data</a>
             </li>
         </ul>
     </div>

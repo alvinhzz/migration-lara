@@ -1,7 +1,7 @@
 @extends('template.master')
 
 @section('content')
-<form class="mt-5" action="/quest/{{ $data->id }}" method="POST">
+<form class="mt-5" action="{{ route('quest.update', ["quest" => $data->id]) }}" method="POST">
     @csrf
     @method('PUT')
     <div class="form-group">

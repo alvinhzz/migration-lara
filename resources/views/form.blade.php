@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form class="mt-5" action="/quest" method="POST">
+<form class="mt-5" action="{{ route('quest.store')}}" method="POST">
     @csrf
     <div class="form-group">
         <label for="judul">Judul</label>

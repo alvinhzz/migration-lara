@@ -12,16 +12,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/quest', 'QuestionsController@index');
+// Route::get('/quest', 'QuestionsController@index');
 
-Route::get('/quest/create', 'QuestionsController@create');
+// Route::get('/quest/create', 'QuestionsController@create');
 
-Route::post('/quest', 'QuestionsController@store');
+// Route::post('/quest', 'QuestionsController@store');
 
-Route::get('/quest/{id}', 'QuestionsController@show');
+// Route::get('/quest/{id}', 'QuestionsController@show');
 
-Route::get('/quest/{id}/edit', 'QuestionsController@edit');
+// Route::get('/quest/{id}/edit', 'QuestionsController@edit');
 
-Route::put('/quest/{id}', 'QuestionsController@update');
+// Route::put('/quest/{id}', 'QuestionsController@update');
 
-Route::delete('/quest/{id}', 'QuestionsController@destroy');
+// Route::delete('/quest/{id}', 'QuestionsController@destroy');
+
+Route::resource('quest', 'QuestionsController');

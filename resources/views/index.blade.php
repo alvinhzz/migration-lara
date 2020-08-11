@@ -6,8 +6,8 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">
-        <h3 class="card-title">DataTable with default features</h3>
+    <div class="card-header mt-3">
+        <h3 class="card-title">Questions Table CRUD</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -33,12 +33,14 @@
                     <td>{{ $quest->updated_at }}</td>
                     <td>
                         <div class="d-flex justify-content-around">
-                            <a href="/quest/{{ $quest->id }}" class="btn btn-success">Detail</a>
-                            <a href="/quest/{{ $quest->id }}/edit" class="btn btn-warning">Edit</a>
-                            <form action="/quest/{{ $quest->id }}" method="POST">
+                            <a href="{{ route('quest.show' ,['quest' => $quest->id]) }}"
+                                class="btn btn-success mr-1">Detail</a>
+                            <a href="{{ route('quest.edit' ,['quest' => $quest->id]) }}"
+                                class="btn btn-warning">Update</a>
+                            <form action="{{ route('quest.destroy' ,['quest' => $quest->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <input type="submit" value="Delete" class="btn btn-danger">
+                                <input type="submit" value="Delete" class="btn btn-danger ml-1">
                             </form>
                         </div>
                     </td>
